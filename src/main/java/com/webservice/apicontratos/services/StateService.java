@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webservice.apicontratos.StateRepository;
 import com.webservice.apicontratos.entities.State;
 import com.webservice.apicontratos.exceptions.NotFoundException;
+import com.webservice.apicontratos.repositories.StateRepository;
 
 @Service
 public class StateService {

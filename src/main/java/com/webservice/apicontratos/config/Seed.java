@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.webservice.apicontratos.StateRepository;
 import com.webservice.apicontratos.entities.State;
+import com.webservice.apicontratos.repositories.StateRepository;
 
 @Configuration
 public class Seed implements CommandLineRunner {

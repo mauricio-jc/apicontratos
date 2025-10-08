@@ -1,4 +1,4 @@
-package com.webservice.apicontratos;
+package com.webservice.apicontratos.repositories;
 
 import java.util.Optional;
 
