@@ -31,7 +31,7 @@ public class Contract extends BaseEntity implements Serializable {
 	@JoinColumn(name = "bank_id", nullable = false)
 	private Bank bank;
 	
-	@Column(name = "amount", columnDefinition = "decimal", precision = 20, scale = 2, nullable = false)
+	@Column(name = "amount",  precision = 20, scale = 2, nullable = false)
 	private BigDecimal amount;
 	
 	@Enumerated(EnumType.STRING)
