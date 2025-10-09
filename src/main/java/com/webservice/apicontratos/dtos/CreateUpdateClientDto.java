@@ -4,11 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class CreateUpdateClientDto {
-	@NotBlank()
+	@NotBlank(message = "Name is required")
 	private String name;
 	
-	@NotBlank()
-	@Size(max = 20)
+	@NotBlank(message = "Document is required")
+	@Size(max = 20, message = "Max characteres is 20")
 	private String document;
 
 	public String getName() {
