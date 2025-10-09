@@ -15,7 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -55,7 +55,7 @@ public class BaseEntity implements Serializable {
 		return uuid;
 	}
 
-	public void setUuid(String uuid) {
+	protected void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
 
@@ -63,16 +63,8 @@ public class BaseEntity implements Serializable {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 	@Override
