@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,7 @@ public class ClientController {
 	    return ResponseEntity.ok().body(client);
 	}
 	
-	@PostMapping(value = "create")
+	@PostMapping(value = "/create")
 	public ResponseEntity<Client> create(@Valid @RequestBody CreateUpdateClientDto dto) {
 		Client client = this.service.create(dto);
 		URI uri = ServletUriComponentsBuilder
@@ -47,6 +48,12 @@ public class ClientController {
 				.buildAndExpand(client.getUuid())
 				.toUri();
 		return ResponseEntity.created(uri).body(client);
+	}
+	
+	@PutMapping(value = "/{uuid}/update")
+	public ResponseEntity<Client> create(@PathVariable String uuid, @Valid @RequestBody CreateUpdateClientDto dto) {
+		Client client = this.service.update(uuid, dto);	
+		return ResponseEntity.ok().body(client);
 	}
 	
 }

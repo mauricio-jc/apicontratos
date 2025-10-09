@@ -22,17 +22,33 @@ public class ClientService {
 	}
 	
 	public Client findByUuid(String uuid) {
-		Optional<Client> state = this.repository.findByUuid(uuid);
+		Optional<Client> client = this.repository.findByUuid(uuid);
 		
-		if (state.isEmpty()) {
+		if (client.isEmpty()) {
 	        throw new NotFoundException("Client not found with UUID: " + uuid);
 	    }
 
-	    return state.get();
+	    return client.get();
 	}
 	
 	public Client create(CreateUpdateClientDto dto) {
 		Client client = new Client(null, dto.getName(), dto.getDocument());
 		return this.repository.save(client);
+	}
+	
+	
+	public Client update(String uuid, CreateUpdateClientDto dto) {
+        Optional<Client> optionalClient = this.repository.findByUuid(uuid);
+
+        if (optionalClient.isEmpty()) {
+            throw new NotFoundException("Client not found with UUID: " + uuid);
+        }
+
+        Client client = optionalClient.get();
+
+        client.setName(dto.getName());
+        client.setDocument(dto.getDocument());
+
+        return this.repository.save(client);
 	}
 }
