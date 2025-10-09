@@ -51,4 +51,33 @@ public class ContractService {
 		
 		return this.repository.save(contract);
 	}
+	
+	public Contract update(String uuid, CreateUpdateContractDto dto) {
+		State state = this.stateService.findById(dto.getStateId());
+		Client client = this.clientService.findById(dto.getClientId());
+		Bank bank = this.bankService.findById(dto.getBankId());
+		
+        Optional<Contract> optionalContract = this.repository.findByUuid(uuid);
+
+        if (optionalContract.isEmpty()) {
+            throw new NotFoundException("Contract not found with UUID: " + uuid);
+        }
+
+        Contract contract = optionalContract.get();
+
+        contract.setState(state);
+        contract.setClient(client);
+        contract.setBank(bank);
+        contract.setAmount(dto.getAmount());
+        contract.setStatus(dto.getStatus());
+        contract.setDueDate(dto.getDueDate());
+        contract.setDescription(dto.getDescription());
+
+        return this.repository.save(contract);
+	}
+	
+	public void delete(String uuid) {
+		Contract contract = this.findByUuid(uuid);
+		this.repository.deleteById(contract.getId());
+	}
 }

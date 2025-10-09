@@ -46,7 +46,6 @@ public class ClientService {
 		return this.repository.save(client);
 	}
 	
-	
 	public Client update(String uuid, CreateUpdateClientDto dto) {
         Optional<Client> optionalClient = this.repository.findByUuid(uuid);
 
