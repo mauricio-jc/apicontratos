@@ -1,9 +1,14 @@
 package com.webservice.apicontratos.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +21,10 @@ public class Bank extends BaseEntity implements Serializable {
 	
 	@Column(name = "name", nullable = false, length = 255)
 	private String name;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "bank")
+    private List<Contract> contracts = new ArrayList<Contract>();
 	
 	public Bank() {
 		super();
@@ -41,5 +50,9 @@ public class Bank extends BaseEntity implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Contract> getContracts() {
+		return contracts;
 	}
 }

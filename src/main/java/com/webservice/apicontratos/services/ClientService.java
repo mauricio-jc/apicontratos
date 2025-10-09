@@ -21,6 +21,16 @@ public class ClientService {
 		return this.repository.findAll();
 	}
 	
+	public Client findById(Long id) {
+		Optional<Client> client = this.repository.findById(id);
+		
+		if (client.isEmpty()) {
+	        throw new NotFoundException("Client not found with ID: " + id);
+	    }
+
+	    return client.get();
+	}
+	
 	public Client findByUuid(String uuid) {
 		Optional<Client> client = this.repository.findByUuid(uuid);
 		

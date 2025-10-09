@@ -20,6 +20,16 @@ public class StateService {
 		return this.repository.findAll();
 	}
 	
+	public State findById(Long id) {
+		Optional<State> state = this.repository.findById(id);
+		
+		if (state.isEmpty()) {
+	        throw new NotFoundException("State not found with iD: " + id);
+	    }
+
+	    return state.get();
+	}
+	
 	public State findByUuid(String uuid) {
 		Optional<State> state = this.repository.findByUuid(uuid);
 		

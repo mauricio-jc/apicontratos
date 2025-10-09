@@ -21,6 +21,16 @@ public class BankService {
 		return this.repository.findAll();
 	}
 	
+	public Bank findById(Long id) {
+		Optional<Bank> bank = this.repository.findById(id);
+		
+		if (bank.isEmpty()) {
+	        throw new NotFoundException("Bank not found with ID: " + id);
+	    }
+
+	    return bank.get();
+	}
+	
 	public Bank findByUuid(String uuid) {
 		Optional<Bank> bank = this.repository.findByUuid(uuid);
 		
@@ -35,7 +45,6 @@ public class BankService {
 		Bank bank = new Bank(null, dto.getCode(), dto.getName());
 		return this.repository.save(bank);
 	}
-	
 	
 	public Bank update(String uuid, CreateUpdateBankDto dto) {
         Optional<Bank> optionalBank = this.repository.findByUuid(uuid);
