@@ -29,7 +29,7 @@ public class ResourceExceptionHandler {
 	public ResponseEntity<StandardError> validationException(MethodArgumentNotValidException e, HttpServletRequest request) {
 		String error = "Bad Request";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
-		Map<String, String> fieldErrors = new HashMap<String, String>();
+		Map<String, Object> fieldErrors = new HashMap<String, Object>();
 		
 		for (FieldError fieldError: e.getBindingResult().getFieldErrors()) {
 			fieldErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
