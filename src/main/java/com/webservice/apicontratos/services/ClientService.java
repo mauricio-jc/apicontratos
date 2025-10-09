@@ -51,4 +51,9 @@ public class ClientService {
 
         return this.repository.save(client);
 	}
+	
+	public void delete(String uuid) {
+		Client client = this.findByUuid(uuid);
+		this.repository.deleteById(client.getId());
+	}
 }
