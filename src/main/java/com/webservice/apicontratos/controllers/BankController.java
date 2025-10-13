@@ -52,7 +52,7 @@ public class BankController {
 	}
 	
 	@PutMapping(value = "/{uuid}/update")
-	public ResponseEntity<Bank> create(@PathVariable String uuid, @Valid @RequestBody CreateUpdateBankDto dto) {
+	public ResponseEntity<Bank> update(@PathVariable String uuid, @Valid @RequestBody CreateUpdateBankDto dto) {
 		Bank bank = this.service.update(uuid, dto);	
 		return ResponseEntity.ok().body(bank);
 	}

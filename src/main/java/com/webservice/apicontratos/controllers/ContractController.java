@@ -51,7 +51,7 @@ public class ContractController {
 	}
 	
 	@PutMapping(value = "/{uuid}/update")
-	public ResponseEntity<Contract> create(@PathVariable String uuid, @Valid @RequestBody CreateUpdateContractDto dto) {
+	public ResponseEntity<Contract> update(@PathVariable String uuid, @Valid @RequestBody CreateUpdateContractDto dto) {
 		Contract contract = this.service.update(uuid, dto);	
 		return ResponseEntity.ok().body(contract);
 	}

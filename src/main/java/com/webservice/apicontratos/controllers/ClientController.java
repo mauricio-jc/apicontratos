@@ -52,7 +52,7 @@ public class ClientController {
 	}
 	
 	@PutMapping(value = "/{uuid}/update")
-	public ResponseEntity<Client> create(@PathVariable String uuid, @Valid @RequestBody CreateUpdateClientDto dto) {
+	public ResponseEntity<Client> update(@PathVariable String uuid, @Valid @RequestBody CreateUpdateClientDto dto) {
 		Client client = this.service.update(uuid, dto);	
 		return ResponseEntity.ok().body(client);
 	}
