@@ -79,8 +79,6 @@ public class Seed implements CommandLineRunner {
 		}
 		else {
 			System.out.println("The table states already has records");
-		}
-		
+		}	
 	}
-
 }
