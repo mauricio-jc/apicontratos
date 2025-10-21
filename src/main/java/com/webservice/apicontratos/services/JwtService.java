@@ -11,6 +11,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.webservice.apicontratos.exceptions.InternalServerErrorException;
 
 @Service
 public class JwtService {
@@ -31,7 +32,7 @@ public class JwtService {
 		    return token;
 		}
 		catch (JWTCreationException e) {
-			throw new RuntimeException("Error while generating token", e);
+			throw new InternalServerErrorException("Error while generating token", e);
 		}
 	}
 	
